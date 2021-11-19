@@ -1,24 +1,24 @@
 ﻿using System;
 
-namespace задание_4
+namespace DZ4
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int n, quantity=0,maxI;
-            double max, composition=1;
+            int n, quantity = 0, maxI;
+            double max, composition = 1;
             Random rand = new Random();
-            
+
 
             do
             {
-              Console.WriteLine("Введите размер массива");
-              n = int.Parse(Console.ReadLine());
-                if(n <= 0 || n > 100) Console.WriteLine("недопустимое значение");
-            } while (n <=0 || n > 100);
+                Console.WriteLine("Введите размер массива");
+                n = int.Parse(Console.ReadLine());
+                if (n <= 0 || n > 100) Console.WriteLine("недопустимое значение");
+            } while (n <= 0 || n > 100);
             double[] A = new double[n];
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 A[i] = rand.Next(-999, 999) / 10.0;
                 Console.Write($"{A[i]} ");
@@ -29,7 +29,8 @@ namespace задание_4
             for (int i = 0; i < n; i++)
             {
                 if (A[i] > 'C') quantity++;
-                if (Math.Abs(A[i]) > Math.Abs(max)) {
+                if (Math.Abs(A[i]) > Math.Abs(max))
+                {
                     maxI = i;
                     max = A[i];
                 }
@@ -53,7 +54,7 @@ namespace задание_4
             while (f == 1)
             {
                 f = 0;
-                for (int i = 0; i < n-1; i++)
+                for (int i = 0; i < n - 1; i++)
                 {
                     if (A[i] >= 0 && A[i + 1] < 0)
                     {
@@ -70,7 +71,7 @@ namespace задание_4
             }
             Console.WriteLine();
             Console.WriteLine("Двумерный массив");
-            int N1, N2,k=1,index=-1;
+            int N1, N2, k = 1, index = -1;
             do
             {
                 Console.Write("Введите колличество строк массива:\t");
@@ -79,7 +80,7 @@ namespace задание_4
                 {
                     Console.WriteLine("Некорректный размер массива.");
                 }
-            }while (N1 <= 0 || N1 >= 100);
+            } while (N1 <= 0 || N1 >= 100);
             do
             {
                 Console.Write("Введите колличество столбцов массива:\t");
@@ -103,7 +104,7 @@ namespace задание_4
                     }
                     else
                     {
-                        if(M[i, j] == 0)
+                        if (M[i, j] == 0)
                         {
                             k = M[i, j];
                             index = j;
@@ -119,36 +120,37 @@ namespace задание_4
             }
             else
             {
-             Console.WriteLine($"{index} ");
+                Console.WriteLine($"{index} ");
             }
             Console.WriteLine("характеристика изначального массива:");
             int[] sum = new int[N1];
-            for (int i = 0; i < N1; i++){
-                    for (int j = 0; j < N2; j++)
-                    {
-                        if (M[i, j] < 0 && M[i, j] % 2 == 0) sum[i] += Math.Abs(M[i, j]);
+            for (int i = 0; i < N1; i++)
+            {
+                for (int j = 0; j < N2; j++)
+                {
+                    if (M[i, j] < 0 && M[i, j] % 2 == 0) sum[i] += Math.Abs(M[i, j]);
 
-                    }
+                }
                 Console.WriteLine($"{sum[i]} ");
             }
             Console.WriteLine();
-            int flag = 1,swap;
+            int flag = 1, swap;
             while (flag == 1)
             {
                 flag = 0;
-                for (int i = 0; i < N1-1; i++)
+                for (int i = 0; i < N1 - 1; i++)
                 {
                     if (sum[i] < sum[i + 1])
                     {
                         swap = sum[i];
-                        sum[i] = sum[i+1];
+                        sum[i] = sum[i + 1];
                         sum[i + 1] = swap;
                         flag = 1;
                         for (int j = 0; j < N2; j++)
                         {
                             swap = M[i, j];
-                            M[i, j] = M[i+1, j];
-                            M[i+1, j] = swap;
+                            M[i, j] = M[i + 1, j];
+                            M[i + 1, j] = swap;
                         }
                     }
                 }
@@ -158,7 +160,7 @@ namespace задание_4
             {
                 for (int j = 0; j < N2; j++)
                 {
-                    Console.Write("{0}\t",M[i, j]);
+                    Console.Write("{0}\t", M[i, j]);
                 }
                 Console.WriteLine();
             }
